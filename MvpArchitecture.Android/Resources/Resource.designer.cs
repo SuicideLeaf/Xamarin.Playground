@@ -41,27 +41,11 @@ namespace MvpArchitecture.Android
 			}
 		}
 		
-		public partial class Layout
-		{
-			
-			// aapt resource value: 0x7f020000
-			public const int Main = 2130837504;
-			
-			static Layout()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Layout()
-			{
-			}
-		}
-		
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f030000
-			public const int app_name = 2130903040;
+			// aapt resource value: 0x7f020000
+			public const int app_name = 2130837504;
 			
 			static String()
 			{
