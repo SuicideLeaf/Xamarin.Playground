@@ -64,6 +64,7 @@ Global
 		$2.DefaultFormat = $6
 		$6.MaxAttributesPerLine = 1
 		$6.AlignAttributes = True
+		$6.AttributesInNewLine = True
 		$0.TextStylePolicy = $3
 		$3.FileWidth = 80
 		$3.scope = text/plain
@@ -71,13 +72,16 @@ Global
 		$4.FileWidth = 80
 		$4.scope = text/x-csharp
 		$0.CSharpFormattingPolicy = $5
+		$5.scope = text/x-csharp
 		$5.SpaceWithinMethodDeclarationParenthesis = True
 		$5.SpaceBetweenEmptyMethodDeclarationParentheses = True
 		$5.SpaceWithinMethodCallParentheses = True
 		$5.SpaceBetweenEmptyMethodCallParentheses = True
+		$5.SpaceWithinExpressionParentheses = True
+		$5.SpaceWithinCastParentheses = True
+		$5.SpaceWithinOtherParentheses = True
 		$5.SpaceBetweenEmptySquareBrackets = True
 		$5.SpaceWithinSquareBrackets = True
-		$5.scope = text/x-csharp
 		$0.TextStylePolicy = $7
 		$7.inheritsSet = null
 		$7.scope = application/vnd.apple-xcode-storyboard

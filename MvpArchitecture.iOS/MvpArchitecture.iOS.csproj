@@ -104,5 +104,11 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MvpArchitecture\MvpArchitecture.csproj">
+      <Project>{22FE0A21-CAF8-4DED-8A06-1641437FF9F5}</Project>
+      <Name>MvpArchitecture</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
