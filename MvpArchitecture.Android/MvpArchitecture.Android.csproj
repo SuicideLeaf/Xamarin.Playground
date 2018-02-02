@@ -126,6 +126,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\layout\contacts_activity.axml" />
     <AndroidResource Include="Resources\layout\contacts_listitem.axml" />
+    <AndroidResource Include="Resources\values\strings.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\mipmap-hdpi\" />
