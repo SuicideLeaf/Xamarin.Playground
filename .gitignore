@@ -38,3 +38,9 @@ Thumbs.db
 
 # dotCover
 *.dotCover
+
+# Visual Studio (>=2015) project-specific, machine local files
+.vs/
+
+# User Specific
+.userprefs
