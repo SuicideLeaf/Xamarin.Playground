@@ -124,9 +124,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\strings.xml" />
     <AndroidResource Include="Resources\layout\contacts_activity.axml" />
     <AndroidResource Include="Resources\layout\contacts_listitem.axml" />
+    <AndroidResource Include="Resources\values\strings.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\mipmap-hdpi\" />
@@ -141,6 +141,7 @@
     <Folder Include="Handlers\" />
     <Folder Include="Helpers\" />
     <Folder Include="Classes\" />
+    <Folder Include="Resources\values\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MvpArchitecture\MvpArchitecture.csproj">
