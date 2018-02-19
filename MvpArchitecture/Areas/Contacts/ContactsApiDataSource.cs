@@ -5,40 +5,44 @@ using MvpArchitecture.Classes;
 using MvpArchitecture.Data.Models.Contacts;
 using MvpArchitecture.Helpers;
 using MvpArchitecture.Interfaces;
+using Refit;
 using static MvpArchitecture.Areas.Contacts.ContactsContract.Data;
 
 namespace MvpArchitecture.Areas.Contacts
 {
 	public class ContactsApiDataSource : IContactsDataSource
 	{
-		private IRequestHandler _requestHandler;
+		private IApi _api;
 
-		public ContactsApiDataSource( IRequestHandler requestHandler )
+		public ContactsApiDataSource( IApi api )
 		{
-			_requestHandler = requestHandler;
+			_api = api;
 		}
 
-		public void GetContacts( IGetContactsCallback callback, string[ ] extraParams )
+		public async Task GetContacts( IGetContactsCallback callback, ContactsQueryParameters queryParams )
 		{
-			string contactsEndPoint = ApiHelper.GetEndPoint( _requestHandler, "LandlordAppContacts", extraParams );
-
-			Task.Run( async ( ) =>
+			try
 			{
-				Response<ContactList> response = await ApiHelper.GetAsync<ContactList>( contactsEndPoint, _requestHandler.ConsumerKey );
+				ContactList response = await _api.GetContacts( queryParams );
 
-				if ( response.Success && response.Model.Contacts.Any( ) || response.StatusCode == HttpStatusCode.NotFound )
+				ContactListViewModel contactList = new ContactListViewModel( response );
+
+				callback.OnContactsLoaded( contactList );
+			}
+			catch ( ApiException e )
+			{
+				if ( e.StatusCode == HttpStatusCode.NotFound )
 				{
-					ContactListViewModel contactList = new ContactListViewModel( response.Model );
-					callback.OnContactsLoaded( contactList );
+					callback.OnContactsLoaded( new ContactListViewModel( ) );
 				}
 				else
 				{
 					callback.OnDataNotAvailable( );
 				}
-			} );
+			}
 		}
 
-		public void GetContact( IGetContactCallBack callback, string[ ] extraParams )
+		public async Task GetContact( IGetContactCallBack callback, string[ ] extraParams )
 		{
 			throw new System.NotImplementedException( );
 		}

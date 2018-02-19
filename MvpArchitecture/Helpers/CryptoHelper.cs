@@ -22,7 +22,7 @@ namespace MvpArchitecture.Helpers
 
                 string hashAsString = Convert.ToBase64String( saltedHash );
 
-                return WebUtility.UrlEncode( hashAsString );
+                return hashAsString;
             }
         }
     }

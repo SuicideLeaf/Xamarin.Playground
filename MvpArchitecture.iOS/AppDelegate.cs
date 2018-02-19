@@ -1,5 +1,17 @@
-﻿using Foundation;
+﻿using System;
+using Foundation;
+using Landlord.iOS.Classes;
+using Landlord.iOS.Helpers;
+using MvpArchitecture.Areas.Contacts;
+using MvpArchitecture.Classes;
+using MvpArchitecture.Helpers;
+using MvpArchitecture.Interfaces;
+using Refit;
 using UIKit;
+using Unity;
+using Unity.Injection;
+using static MvpArchitecture.Areas.Contacts.ContactsContract;
+using static MvpArchitecture.Areas.Contacts.ContactsContract.Data;
 
 namespace MvpArchitecture.iOS
 {
@@ -9,6 +21,7 @@ namespace MvpArchitecture.iOS
 	public class AppDelegate : UIApplicationDelegate
 	{
 		// class-level declarations
+		public static UnityContainer Container { get; set; }
 
 		public override UIWindow Window
 		{
@@ -20,6 +33,19 @@ namespace MvpArchitecture.iOS
 		{
 			// Override point for customization after application launch.
 			// If not required for your application you can safely delete this method
+			Container = new UnityContainer( );
+
+			UserDefaults.SetIsAuthenticated( true );
+			UserDefaults.SetInstanceUrl( "http://192.168.108.219:57204/" );
+			KeyChainHelper.StoreTokenKeyChain( new Guid( "476F624F-2238-4041-AC31-C78F4E1DE869" ) );
+
+			string instanceUrl = UserDefaults.IsAuthenticated ? UserDefaults.InstanceUrl : "todo";
+			string consumerKey = CoreConfig.TestConsumerKey.ToString( );
+
+			Container.RegisterInstance( RestService.For<IApi>( ApiHelper.GetHttpClient( instanceUrl, consumerKey ) ) );
+			Container.RegisterType<IContactsDataSource, ContactsApiDataSource>( "ContactsApiDataSource" );
+			Container.RegisterType<IGetContactsCallback, ContactsViewCallback>( );
+			Container.RegisterType<IContactsDataSource, ContactsRepository>( new InjectionConstructor( new ResolvedParameter<IContactsDataSource>( "ContactsApiDataSource" ) ) );
 
 			return true;
 		}

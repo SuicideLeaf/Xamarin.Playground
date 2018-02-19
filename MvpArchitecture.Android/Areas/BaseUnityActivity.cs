@@ -21,7 +21,6 @@ namespace MvpArchitecture.Android.Areas
 			App.Container.RegisterInstance<IRequestHandler>( new RequestHandler( this ) );
 
 			Presenter = App.Container.Resolve<T>( );
-			Presenter.Start( );
 		}
 	}
 }

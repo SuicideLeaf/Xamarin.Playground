@@ -1,4 +1,5 @@
-﻿using static MvpArchitecture.Areas.Contacts.ContactsContract.Data;
+﻿using System.Threading.Tasks;
+using static MvpArchitecture.Areas.Contacts.ContactsContract.Data;
 
 namespace MvpArchitecture.Areas.Contacts
 {
@@ -11,14 +12,14 @@ namespace MvpArchitecture.Areas.Contacts
 			_contactsApiDataSource = contactsApiDataSource;
 		}
 
-		public void GetContact( IGetContactCallBack callback, string[ ] extraParams )
+		public async Task GetContact( IGetContactCallBack callback, string[ ] extraParams )
 		{
-			_contactsApiDataSource.GetContact( callback, extraParams );
+			await _contactsApiDataSource.GetContact( callback, extraParams );
 		}
 
-		public void GetContacts( IGetContactsCallback callback, string[ ] extraParams )
+		public async Task GetContacts( IGetContactsCallback callback, ContactsQueryParameters queryParams )
 		{
-			_contactsApiDataSource.GetContacts( callback, extraParams );
+			await _contactsApiDataSource.GetContacts( callback, queryParams );
 		}
 	}
 }

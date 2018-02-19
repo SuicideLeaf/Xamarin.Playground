@@ -1,9 +1,11 @@
-﻿namespace MvpArchitecture.Areas
+﻿using System.Threading.Tasks;
+
+namespace MvpArchitecture.Areas
 {
-	public abstract class BasePresenter
+	public abstract class BasePresenter : IBasePresenter
 	{
 		public IBaseView View { get; set; }
-		public abstract void Start( );
+		public abstract Task Start( );
 
 		protected internal BasePresenter( IBaseView view )
 		{

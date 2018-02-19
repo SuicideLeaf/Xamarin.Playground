@@ -15,7 +15,7 @@ using static MvpArchitecture.Areas.Contacts.ContactsContract;
 namespace MvpArchitecture.Android.Areas.Contacts
 {
 	[Activity( Label = "Contacts", MainLauncher = true )]
-	public class ContactsActivity : BaseUnityActivity<ContactsPresenter>, IContactsView
+	public class ContactsActivity : BaseApiActivity<ContactsPresenter, ContactsQueryParameters>, IContactsView
 	{
 		private ContactsAdapter _contactsAdapter;
 		private RecyclerView _recyclerView;
@@ -24,7 +24,7 @@ namespace MvpArchitecture.Android.Areas.Contacts
 		private TextView _noContactsTextView;
 		private SwipeRefreshLayout _swipeRefreshLayout;
 
-		public int LeaseId { get; set; }
+		public int LeaseId => 10052;
 
 		public override void RegisterView( )
 		{
@@ -33,11 +33,12 @@ namespace MvpArchitecture.Android.Areas.Contacts
 
 		protected override void OnCreate( Bundle savedInstanceState )
 		{
+			QueryParameters = new ContactsQueryParameters( LeaseId );
+
 			base.OnCreate( savedInstanceState );
 
 			SetContentView( Resource.Layout.contacts_activity );
 
-			LeaseId = 10052;
 			PreferencesHelper.SetInstanceUrl( this, "http://192.168.108.219:57204/" );
 			PreferencesHelper.SetAuthenticationToken( this, new Guid( "476F624F-2238-4041-AC31-C78F4E1DE869" ) );
 
@@ -46,10 +47,10 @@ namespace MvpArchitecture.Android.Areas.Contacts
 			SetupViews( );
 		}
 
-		protected override void OnResume( )
+		protected override async void OnResume( )
 		{
 			base.OnResume( );
-			Presenter.Start( );
+			await Presenter.Start( );
 		}
 
 		private void FindViews( )
@@ -67,9 +68,9 @@ namespace MvpArchitecture.Android.Areas.Contacts
 			_recyclerView.SetLayoutManager( new LinearLayoutManager( this ) );
 			_recyclerView.SetAdapter( _contactsAdapter );
 
-			_swipeRefreshLayout.Refresh += ( sender, e ) =>
+			_swipeRefreshLayout.Refresh += async ( sender, e ) =>
 			{
-				Presenter.LoadContacts( true );
+				await Presenter.LoadContacts( true );
 			};
 
 			SetPresenter( );
@@ -116,6 +117,13 @@ namespace MvpArchitecture.Android.Areas.Contacts
 			ToggleRefreshing( false );
 			ToggleLoadingOverlay( false );
 			ToggleRetryOverlay( true, "Something went wrong... Tap to retry" );
+		}
+
+		public void ShowLoadingOverlay( )
+		{
+			ToggleRefreshing( false );
+			ToggleLoadingOverlay( true );
+			ToggleRetryOverlay( false );
 		}
 	}
 }

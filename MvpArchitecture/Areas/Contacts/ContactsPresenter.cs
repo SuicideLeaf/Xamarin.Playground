@@ -1,4 +1,5 @@
-﻿using static MvpArchitecture.Areas.Contacts.ContactsContract;
+﻿using System.Threading.Tasks;
+using static MvpArchitecture.Areas.Contacts.ContactsContract;
 using static MvpArchitecture.Areas.Contacts.ContactsContract.Data;
 
 namespace MvpArchitecture.Areas.Contacts
@@ -15,33 +16,29 @@ namespace MvpArchitecture.Areas.Contacts
 			_contactsViewCallback = contactsViewCallback;
 		}
 
-		public void LoadContacts( )
+		public async Task LoadContacts( )
 		{
-			LoadContacts( false );
+			await LoadContacts( false );
 		}
 
-		public void LoadContacts( bool isRefreshing )
+		public async Task LoadContacts( bool isRefreshing )
 		{
-			if ( isRefreshing )
+			if ( !isRefreshing )
 			{
-				View.ToggleRefreshing( true );
-			}
-			else
-			{
-				View.ToggleLoadingOverlay( true );
+				View.ShowLoadingOverlay( );
 			}
 
-			_contactsRepository.GetContacts( _contactsViewCallback, new[ ] { $"leaseId={View.LeaseId}" } );
+			await _contactsRepository.GetContacts( _contactsViewCallback, View.QueryParameters );
 		}
 
-		public void LoadContactDetails( )
+		public async Task LoadContactDetails( )
 		{
 			throw new System.NotImplementedException( );
 		}
 
-		public override void Start( )
+		public override async Task Start( )
 		{
-			LoadContacts( );
+			await LoadContacts( );
 		}
 	}
 }

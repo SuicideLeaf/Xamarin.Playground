@@ -1,35 +1,35 @@
-﻿using System;
+﻿using System.Threading.Tasks;
 using MvpArchitecture.Data.Models.Contacts;
 
 namespace MvpArchitecture.Areas.Contacts
 {
 	public class ContactsContract
 	{
-		public interface IContactsView : IBaseView
+		public interface IContactsView : IApiView<ContactsQueryParameters>
 		{
 			bool IsActive { get; }
-			int LeaseId { get; }
 			void ToggleRefreshing( bool active );
 			void ToggleLoadingOverlay( bool active );
 			void ToggleRetryOverlay( bool active, string message = "" );
+			void ShowLoadingOverlay( );
 			void ShowLoadingContactsError( );
 			void ShowContacts( ContactListViewModel contactList );
 			void ShowNoContacts( );
 		}
 
-		public interface IContactsPresenter
+		public interface IContactsPresenter : IBasePresenter
 		{
-			void LoadContacts( );
-			void LoadContacts( bool isRefreshing );
-			void LoadContactDetails( );
+			Task LoadContacts( );
+			Task LoadContacts( bool isRefreshing );
+			Task LoadContactDetails( );
 		}
 
 		public class Data
 		{
 			public interface IContactsDataSource
 			{
-				void GetContacts( IGetContactsCallback callback, string[ ] extraParams );
-				void GetContact( IGetContactCallBack callback, string[ ] extraParams );
+				Task GetContacts( IGetContactsCallback callback, ContactsQueryParameters queryParams );
+				Task GetContact( IGetContactCallBack callback, string[ ] extraParams );
 			}
 
 			public interface IGetContactsCallback : IBaseCallback

@@ -17,5 +17,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="refit" Version="4.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Interfaces\IContactsApi.cs" />
+    <Compile Remove="Classes\WebApi.cs" />
   </ItemGroup>
 </Project>

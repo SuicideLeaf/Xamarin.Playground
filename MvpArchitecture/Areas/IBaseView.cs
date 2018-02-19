@@ -1,4 +1,5 @@
 ﻿using System;
+using static MvpArchitecture.Helpers.ApiHelper;
 
 namespace MvpArchitecture.Areas
 {

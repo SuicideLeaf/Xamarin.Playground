@@ -1,7 +1,9 @@
-﻿namespace MvpArchitecture.Areas
+﻿using System.Threading.Tasks;
+
+namespace MvpArchitecture.Areas
 {
 	public interface IBasePresenter
 	{
-		void Start( );
+		Task Start( );
 	}
 }
