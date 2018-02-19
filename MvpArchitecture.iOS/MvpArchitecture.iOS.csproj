@@ -166,6 +166,8 @@
     <Compile Include="Areas\Contacts\ContactsTableViewController.designer.cs">
       <DependentUpon>ContactsTableViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Areas\BaseViewController.cs" />
+    <Compile Include="Areas\BaseApiViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MvpArchitecture\MvpArchitecture.csproj">

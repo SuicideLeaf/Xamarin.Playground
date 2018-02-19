@@ -16,30 +16,24 @@ namespace MvpArchitecture.Areas.Contacts
 
 		public void OnContactsLoaded( ContactListViewModel contactList )
 		{
-			_contactsView.RunOnUiThread( ( ) =>
+			// The view may not be able to handle UI updates anymore
+			if ( !_contactsView.IsActive )
 			{
-				// The view may not be able to handle UI updates anymore
-				if ( !_contactsView.IsActive )
-				{
-					return;
-				}
+				return;
+			}
 
-				ProcessContacts( contactList );
-			} );
+			ProcessContacts( contactList );
 		}
 
 		public void OnDataNotAvailable( )
 		{
-			_contactsView.RunOnUiThread( ( ) =>
+			// The view may not be able to handle UI updates anymore
+			if ( !_contactsView.IsActive )
 			{
-				// The view may not be able to handle UI updates anymore
-				if ( !_contactsView.IsActive )
-				{
-					return;
-				}
+				return;
+			}
 
-				_contactsView.ShowLoadingContactsError( );
-			} );
+			_contactsView.ShowLoadingContactsError( );
 		}
 
 		private void ProcessContacts( ContactListViewModel contactList )
