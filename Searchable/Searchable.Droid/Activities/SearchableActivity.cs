@@ -2,13 +2,16 @@
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Runtime;
 using Android.Support.V7.App;
 
 namespace Searchable.Droid.Activities
 {
-	[IntentFilter( new[ ] {Intent.ActionSearch} )]
+	[Register("com.released.Searchable.SearchableActivity")]
 	[Activity( Label = "Searchable Activity" )]
-	public class SearchableActivity : Activity
+	[IntentFilter( new[ ] {Intent.ActionSearch} )]
+	[MetaData( "android.app.searchable", Resource = "@xml/searchable" )]
+	public class SearchableActivity : AppCompatActivity
 	{
 		protected override async void OnCreate( Bundle savedInstanceState )
 		{
