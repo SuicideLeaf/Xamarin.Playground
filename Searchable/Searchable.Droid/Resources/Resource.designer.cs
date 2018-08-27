@@ -3107,6 +3107,9 @@ namespace Searchable.Droid
 			// aapt resource value: 0x7f0e0000
 			public const int menu_search = 2131623936;
 			
+			// aapt resource value: 0x7f0e0001
+			public const int menu_search_2 = 2131623937;
+			
 			static Menu()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

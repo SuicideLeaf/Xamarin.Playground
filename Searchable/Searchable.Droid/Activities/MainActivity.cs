@@ -8,7 +8,7 @@ namespace Searchable.Droid.Activities
 {
 	[Activity( Label = "Main", MainLauncher = true )]
 	[MetaData( "android.app.default_searchable", Value = "com.released.Searchable.SearchableActivity" )]
-	public class MainActivity : AppCompatActivity
+	public class MainActivity : AppCompatActivity, IMenuItemOnActionExpandListener
 	{
 		protected override void OnCreate( Bundle savedInstanceState )
 		{
@@ -22,11 +22,27 @@ namespace Searchable.Droid.Activities
 		{
 			MenuInflater.Inflate( Resource.Menu.menu_search, menu );
 
+			IMenuItem menuItem = menu.FindItem( Resource.Id.menu_search );
+			menuItem.SetOnActionExpandListener( this );
+			
 			SearchManager searchManager = ( SearchManager )GetSystemService( SearchService );
-			SearchView searchView = ( SearchView )menu.FindItem( Resource.Id.menu_search ).ActionView;
-
+			SearchView searchView = ( SearchView )menuItem.ActionView;
 			searchView.SetSearchableInfo( searchManager.GetSearchableInfo( ComponentName ) );
 			
+			return true;
+		}
+
+		public bool OnMenuItemActionCollapse( IMenuItem item )
+		{
+			SetTheme( Android.Resource.Style.ThemeMaterial );
+
+			return true;
+		}
+
+		public bool OnMenuItemActionExpand( IMenuItem item )
+		{
+			SetTheme( Android.Resource.Style.ThemeMaterialLight );
+
 			return true;
 		}
 	}
