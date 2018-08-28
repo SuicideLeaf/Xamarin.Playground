@@ -11,7 +11,7 @@ using Android.Views;
 namespace Searchable.Droid.Activities
 {
 	[Register( "com.released.Searchable.SearchableActivity" )]
-	[Activity( Label = "Searchable Activity", LaunchMode = LaunchMode.SingleTop )]
+	[Activity( Label = "Searchable Activity", LaunchMode = LaunchMode.SingleTop, Theme = "@style/Theme.AppCompat.Light" )]
 	[IntentFilter( new[ ] { Intent.ActionSearch } )]
 	[MetaData( "android.app.searchable", Resource = "@xml/searchable", Value = "com.released.Searchable.SearchableActivity" )]
 	public class SearchableActivity : AppCompatActivity
@@ -54,9 +54,8 @@ namespace Searchable.Droid.Activities
 
 			SearchManager searchManager = ( SearchManager )GetSystemService( SearchService );
 			SearchView searchView = ( SearchView )menu.FindItem( Resource.Id.menu_search ).ActionView;
-
 			searchView.SetSearchableInfo( searchManager.GetSearchableInfo( ComponentName ) );
-			
+			searchView.OnActionViewExpanded( );
 
 			if ( _query != null )
 			{
