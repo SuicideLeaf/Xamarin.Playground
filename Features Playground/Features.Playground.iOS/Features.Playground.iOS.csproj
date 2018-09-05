@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -102,10 +102,44 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="ViewControllers\MaintenanceListViewController.cs" />
-    <Compile Include="ViewControllers\MaintenanceListViewController.designer.cs">
-      <DependentUpon>MaintenanceListViewController.cs</DependentUpon>
+    <Compile Include="Classes\Extensions.cs" />
+    <Compile Include="Classes\StoryboardHelper.cs" />
+    <Compile Include="FlowLayouts\Maintenance\MaintenanceDetailsImageCollectionViewDelegateFlowLayout.cs" />
+    <Compile Include="FlowLayouts\Maintenance\MaintenanceDetailsImageCollectionViewFlowLayout.cs" />
+    <Compile Include="Sources\Maintenance\MaintenanceDetailsImageCollectionViewDataSource.cs" />
+    <Compile Include="Sources\Maintenance\MaintenanceTableViewSource.cs" />
+    <Compile Include="Views\Cards\CardView.cs" />
+    <Compile Include="Views\Cards\CardView.designer.cs">
+      <DependentUpon>CardView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Cards\CardViewRound.cs" />
+    <Compile Include="Views\Cells\MaintenanceDetailsCollectionViewCell.cs" />
+    <Compile Include="Views\Cells\MaintenanceDetailsCollectionViewCell.designer.cs" />
+    <Compile Include="Views\Cells\MaintenanceTableViewCell2.cs" />
+    <Compile Include="Views\Cells\MaintenanceTableViewCell2.designer.cs">
+      <DependentUpon>MaintenanceTableViewCell2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Text\DescriptionLabel.cs" />
+    <Compile Include="Views\Text\DetailsTitleLabel.cs" />
+    <Compile Include="Views\Text\PrimaryCellLabel.cs" />
+    <Compile Include="Views\Text\PrimaryCellLabel.designer.cs" />
+    <Compile Include="Views\Text\SecondaryCellLabel.cs" />
+    <Compile Include="Views\Text\SecondaryCellLabel.designer.cs" />
+    <Compile Include="Views\Text\SmallLabel.cs" />
+    <Compile Include="ViewControllers\Maintenance\Details\MaintenanceDetailsViewController.cs" />
+    <Compile Include="ViewControllers\Maintenance\Details\MaintenanceDetailsViewController.designer.cs" />
+    <Compile Include="ViewControllers\Maintenance\List\MaintenanceListViewController2.cs" />
+    <Compile Include="ViewControllers\Maintenance\List\MaintenanceListViewController2.designer.cs" />
+    <Compile Include="ViewControllers\Maintenance\MaintenanceEmbeddedTableViewController.cs" />
+    <Compile Include="ViewControllers\Maintenance\MaintenanceEmbeddedTableViewController.designer.cs" />
+    <Compile Include="ViewControllers\Maintenance\MaintenanceHubViewController.cs" />
+    <Compile Include="ViewControllers\Maintenance\MaintenanceHubViewController.designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Features.Playground.Core\Features.Playground.Core.csproj">
+      <Project>{e0150be6-fb58-4268-bae0-df272cb943b0}</Project>
+      <Name>Features.Playground.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

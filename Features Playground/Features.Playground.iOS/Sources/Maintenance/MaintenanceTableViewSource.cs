@@ -41,7 +41,7 @@ namespace Features.Playground.iOS.Sources.Maintenance
 
 		public override UITableViewCell GetCell( UITableView tableView, NSIndexPath indexPath )
 		{
-			if ( tableView.DequeueReusableCell( "MaintenanceTableViewCell", indexPath ) is MaintenanceTableViewCell maintenanceCell )
+			if ( tableView.DequeueReusableCell( "MaintenanceTableViewCell", indexPath ) is MaintenanceTableViewCell2 maintenanceCell )
 			{
 				maintenanceCell.UpdateViews( _items[ indexPath.Row ] );
 

@@ -1,5 +1,5 @@
 ﻿using System;
-using Features.Playground.iOS.Storyboards;
+using Features.Playground.iOS.Views.Cells;
 using Foundation;
 using UIKit;
 

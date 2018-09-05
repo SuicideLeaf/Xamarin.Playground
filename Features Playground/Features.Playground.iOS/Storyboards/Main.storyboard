@@ -239,7 +239,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MaintenanceTableViewCell" rowHeight="75" id="nTx-kT-K3w" customClass="MaintenanceTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MaintenanceTableViewCell" rowHeight="75" id="nTx-kT-K3w" customClass="MaintenanceTableViewCell2">
                                         <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nTx-kT-K3w" id="Ab2-ZK-PLp">
@@ -274,8 +274,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="DueDateLabel" destination="TTV-jb-aTv" id="tgK-2t-Djy"/>
-                                            <outlet property="TitleLabel" destination="4kh-g8-YJz" id="r4K-d7-aJk"/>
+                                            <outlet property="DueDateLabel" destination="TTV-jb-aTv" id="RTo-N2-QXp"/>
+                                            <outlet property="TitleLabel" destination="4kh-g8-YJz" id="gMT-6I-21K"/>
                                             <segue destination="kjL-nF-p7r" kind="show" id="Gjn-jH-CZt"/>
                                         </connections>
                                     </tableViewCell>

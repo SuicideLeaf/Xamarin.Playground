@@ -8,11 +8,11 @@ using UIKit;
 
 namespace Features.Playground.iOS.Views.Cells
 {
-	public partial class MaintenanceTableViewCell : UITableViewCell
+	public partial class MaintenanceTableViewCell2 : UITableViewCell
 	{
 		private static UIColor Red = UIColor.Clear.FromHex( "#ce4837" );
 
-		public MaintenanceTableViewCell( IntPtr handle ) : base( handle )
+		public MaintenanceTableViewCell2( IntPtr handle ) : base( handle )
 		{
 		}
 
